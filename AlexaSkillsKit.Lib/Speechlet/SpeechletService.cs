@@ -51,7 +51,7 @@ namespace AlexaSkillsKit.Speechlet
                 });
             }
 
-            if (speechlet is IDisplaySpeechletAsync) {
+            if (speechlet is IDisplaySpeechletAsync || speechlet is IDisplaySpeechlet) {
                 AddHandler<DisplayRequest>(DisplayRequest.TypeName, async (request, context) => {
                     return (speechlet as IDisplaySpeechlet)?.OnDisplay(request, context) ??
                         await (speechlet as IDisplaySpeechletAsync).OnDisplayAsync(request, context);
